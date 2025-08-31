@@ -35,21 +35,6 @@ When passing a value of enumerated type from Python to the C++ API:
 - Convert the Python enum value to an cdef int
 - Use a static cast to convert the int to the enum type
 
-### Procedural Statement Construction
-
-The Context class exposes methods for constructing ARL procedural statements, matching the C++ API's `mkTypeProc*` methods. These allow Python code to build up procedural code structures programmatically.
-
-Example usage:
-```python
-ctxt = arl.Factory.inst().mkContext()
-lhs = vsc.TypeExpr.mkVarRef("lhs")
-rhs = vsc.TypeExpr.mkVarRef("rhs")
-assign_stmt = ctxt.mkTypeProcStmtAssign(lhs, 0, rhs)
-break_stmt = ctxt.mkTypeProcStmtBreak()
-expr_stmt = ctxt.mkTypeProcStmtExpr(lhs)
-```
-See the Python docstrings and unit tests for the full list of available methods and argument types.
-
 ## Visitor
 C++ libraries frequently have a visitor interface that can be implemented by clients. 
 The Python extension exposes this Visitor interface as a Python class from which clients
